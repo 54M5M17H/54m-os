@@ -1,14 +1,18 @@
 
 [org 0x7c00]  ; tell assembler the offset of this code segment
 
-	mov bx, HELLO_MSG
-	call print_string
+	; mov bx, HELLO_MSG
+	; call print_string
 
-	mov bx, GOODBYE_MSG
-	call print_string
-	jmp $  ; $ means current position -- infinite loop
+	; mov bx, GOODBYE_MSG
+	; call print_string
+	; jmp $  ; $ means current position -- infinite loop
+
+	mov dx, 0x1fb6
+	call print_hex
 
 %include "print_string.asm"
+%include "print_hex.asm"
 
 HELLO_MSG:
 	db 'Hello world', 0
