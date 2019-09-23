@@ -10,7 +10,7 @@ print_hex:
 
 _get_next_chunk:
 	cmp cx, 0  ; if counter is 0, return
-	jg $ + 2
+	jg $ + 3  ; jump 3 bytes of instruction (?!) just works
 	ret
 
 	dec cx  ; decrement the counter
@@ -44,4 +44,5 @@ _output_hex_string:
 	call print_string
 	ret
 
-HEX_OUT : db '0x0000', 0
+HEX_OUT: db '0x0000', 0
+WARNING: db 'hello', 0
