@@ -28,9 +28,9 @@
 
 	jmp $  ; $ means current position -- infinite loop
 
-%include "print_string.asm"
-%include "print_hex.asm"
-%include "read_disk.asm"
+%include "bios/print_string.asm"
+%include "bios/print_hex.asm"
+%include "bios/read_disk.asm"
 
 HELLO_MSG:
 	db 'Hello world', 0
