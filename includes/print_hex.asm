@@ -1,3 +1,5 @@
+; prints hex value in `dx` as string
+
 print_hex:
 	pusha
 	mov cx, 4  ; counter, 4 x 4 bits === 16 bit hex, 4 chars
