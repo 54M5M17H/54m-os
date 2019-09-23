@@ -6,10 +6,11 @@
 
 	; mov bx, GOODBYE_MSG
 	; call print_string
-	; jmp $  ; $ means current position -- infinite loop
 
 	mov dx, 0x1fb6
 	call print_hex
+
+	jmp $  ; $ means current position -- infinite loop
 
 %include "print_string.asm"
 %include "print_hex.asm"
