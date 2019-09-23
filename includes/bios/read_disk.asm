@@ -1,5 +1,5 @@
 
-disk_load:
+bios_disk_load:
 	pusha
 	push dx  ; dx contains the number of sectors we are requesting
 	         ; push to stack so we can compare with result later
@@ -13,17 +13,17 @@ disk_load:
 
 	int 0x13      ; issue BIOS interrupt
 
-	jc disk_error  ; jc == jump if carry set -> interrupt will set carry if error
+	jc bios_disk_error  ; jc == jump if carry set -> interrupt will set carry if error
 	pop dx         ; restore to dx the number of requested sectors
 	cmp dh, al     ; compare to the number of sectors read successfully
-	jne disk_error ; if not equal, error occurred
+	jne bios_disk_error ; if not equal, error occurred
 
 	popa
 	ret
 
-disk_error:
-	mov bx, DISK_ERR_MSG
-	call print_string
+bios_disk_error:
+	mov bx, BIOS_DISK_ERR_MSG
+	call bios_print_string
 	jmp $
 
-DISK_ERR_MSG: db "Disk read error !", 0
+BIOS_DISK_ERR_MSG: db "Disk read error !", 0
