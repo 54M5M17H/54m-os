@@ -14,8 +14,6 @@ gdt_null:  ; a NULL descriptor is required to begin
 	dd 0x0
 
 
-
-
 gdt_code:  ; defines the code segment
 
 	; the base and limit bits are both separated out
@@ -69,3 +67,10 @@ gdt_descriptor:
 
 	; write the start address of the gdt to the descriptor
 	dd gdt_start
+
+
+; some useful offsets
+; we need to give these to segment registers
+; so the CPU knows which segment we wish to access
+CODE_SEG equ gdt_code - gdt_start
+DATA_SEG equ gdt_data - gdt_start

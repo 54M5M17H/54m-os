@@ -1,4 +1,4 @@
-; takes 1 argument: pointer to first character of NULL-terminated string
+; takes 1 argument at bx: pointer to first character of NULL-terminated string
 bios_print_string:
 	pusha  ; push all registers to the stack
 	mov ah, 0x0e  ; interrupt code 14 (scrolling teletype BIOS routine) in high end of register a
