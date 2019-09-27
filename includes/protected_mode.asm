@@ -23,6 +23,7 @@ switch_to_protected_mode:
 	; we can do that by jumping to our new code segment;
 	; defined by the GDT
 	jmp CODE_SEG:init_protected_mode
+	; jmp works because our base offset is 0, where we already are
 
 [bits 32]  ; tell the assembler this is 32-bits
 init_protected_mode:
@@ -41,7 +42,9 @@ init_protected_mode:
 	mov ebp, 0x90000
 	mov esp, ebp
 
-	mov ebx, PROTECTED_MODE_MSG
-	call print_string_vga
+	; a label implemented indepently
+	; the place to go once in protected mode
+	; should never return
+	call BEGIN_PROTECTED_MODE
 
 	jmp $

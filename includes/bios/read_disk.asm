@@ -1,3 +1,7 @@
+; params
+; dh: number of sectors to load
+; dl: disk to read from
+; bx: address to store in
 
 bios_disk_load:
 	pusha
