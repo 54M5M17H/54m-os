@@ -54,6 +54,10 @@ clean:
 debug/kernel.elf: objs/entry.o ${OBJS}
 	${LD} -o $@ -Ttext 0x1000 $^
 
+run-gdb: img/os_image debug/kernel.elf
+	${QEMU_DEBUG} -s -S -fda img/os_image &
+	${GDB} -ex "target remote localhost:1234" -ex "symbol-file debug/kernel.elf"
+
 run-debug: img/os_image debug/kernel.elf
 	${QEMU_DEBUG} -s -S -fda img/os_image
-	# ${GDB} -ex "target remote localhost:1234" -ex "symbol-file debug/kernel.elf"
+	# NOW ATTACH VSCODE
