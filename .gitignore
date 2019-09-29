@@ -1,9 +1,12 @@
 *.bin
 *.txt
 *.o
+*.elf
 
 bin/
 objs/
 img/
 
 # .vscode/
+
+debug/
