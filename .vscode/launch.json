@@ -1,0 +1,20 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "QEMU attach",
+      "type": "gdb",
+      "request": "attach",
+      "executable": "./bin/kernel.bin",
+      "target": "localhost:1234",
+      "remote": true,
+      "gdbpath": "/usr/local/bin/i386-elf-gdb",
+      "cwd": "${workspaceRoot}",
+      "valuesFormatting": "parseText",
+      "autorun": ["symbol-file ./debug/kernel.elf"]
+    }
+  ]
+}
