@@ -3,6 +3,9 @@
 
 #include "types.h"
 
+// selects our the code segment in our GDT
+#define KERNEL_CODE_SEGMENT 0x08
+
 typedef struct {
 	double_byte offset_low; // bits 0->15 of the offset
 	double_byte code_segment_selector;
@@ -19,7 +22,7 @@ typedef struct {
 
 	double_byte offset_high; // bits 16-31 of offset
 
-} __attribute__((packed)) IDTEntry;
+} __attribute__((packed)) IDT_Entry;
 // packed attribute -- pack into minimal space
 // lays it out as it would if we wrote in assembly
 
@@ -31,5 +34,8 @@ typedef struct {
 } __attribute__((packed)) IDT_Register;
 
 #define IDT_ENTRIES_NUMBER 256
+
+IDT_Entry idt[IDTEntries];
+IDT_Register idt_reg;
 
 #endif
