@@ -35,7 +35,7 @@ typedef struct {
 
 #define IDT_ENTRIES_NUMBER 256
 
-IDT_Entry idt[IDTEntries];
+IDT_Entry idt[IDT_ENTRIES_NUMBER];
 IDT_Register idt_reg;
 
 #endif
