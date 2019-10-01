@@ -6,7 +6,6 @@
 bin/
 objs/
 img/
+debug/
 
 # .vscode/
-
-debug/
