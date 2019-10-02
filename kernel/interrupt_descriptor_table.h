@@ -38,4 +38,7 @@ typedef struct {
 IDT_Entry idt[IDT_ENTRIES_NUMBER];
 IDT_Register idt_reg;
 
+void set_idt_entry(int i, word handler);
+void set_idt();
+
 #endif
