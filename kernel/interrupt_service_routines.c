@@ -43,7 +43,51 @@ void isr_install() {
 	set_idt(); // load with asm
 }
 
+// message at index of its exception number
+char *exception_messages[] = {
+	"Division By Zero",
+	"Debug",
+	"Non Maskable Interrupt",
+	"Breakpoint",
+	"Into Detected Overflow",
+	"Out of Bounds",
+	"Invalid Opcode",
+	"No Coprocessor",
+
+	"Double Fault",
+	"Coprocessor Segment Overrun",
+	"Bad TSS",
+	"Segment Not Present",
+	"Stack Fault",
+	"General Protection Fault",
+	"Page Fault",
+	"Unknown Interrupt",
+
+	"Coprocessor Fault",
+	"Alignment Check",
+	"Machine Check",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved",
+	"Reserved"};
+
 void isr_handler(Register_Table rt) {
 	screen_print("received interrupt...\n\0");
-	
+	char err_code[3];
+	itoa(rt.interrupt_number, err_code);
+	screen_print(err_code);
+	screen_print("\n");
+
+	screen_print(exception_messages[rt.interrupt_number]);
+	screen_print("\n");
 }
