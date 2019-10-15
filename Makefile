@@ -32,7 +32,7 @@ run: all
 img/os_image: bin/boot_sector.bin bin/kernel.bin
 	cat $^ > $@
 
-bin/kernel.bin: objs/entry.o ${OBJS}
+bin/kernel.bin: objs/entry.o ${OBJS} objs/interrupt.o
 	${LD} -o $@ -Ttext 0x1000 $^ --oformat binary
 
 # C files depend on all headers for ease
@@ -51,7 +51,7 @@ clean:
 
 # DEBUGGING commands
 
-debug/kernel.elf: objs/entry.o ${OBJS}
+debug/kernel.elf: objs/entry.o ${OBJS} objs/interrupt.o
 	${LD} -o $@ -Ttext 0x1000 $^
 
 run-gdb: img/os_image debug/kernel.elf
